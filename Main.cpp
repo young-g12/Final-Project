@@ -36,7 +36,7 @@ class Player {
             return skill;
         }
 
-        void setPlayerName(int skill) {
+        void setSkill (int skill) {
             this->skill = skill;
         }
 
@@ -64,11 +64,55 @@ class Mission {
     vector<Mission> missions;
     vector<string> missionHistory;
 
-    string missionName;
-    string difficultyLevel;
-    int rewardCredits;
-    int reputationGain;
-    int energyCost;
+    private:
+        string missionName;
+        string difficultyLevel;
+        int rewardCredits;
+        int reputationGain;
+        int energyCost;
+
+    public:
+        string getMissionName() {
+            return missionName;
+        }
+
+        void setMissionName(string missionName) {
+            this->missionName = missionName;
+        }
+
+        string getDifficultyLevel() {
+            return difficultyLevel;
+        }
+
+        void setDifficultyLevel(string difficultyLevel) {
+            this->difficultyLevel = difficultyLevel;
+        }
+
+        string getRewardCredits() {
+            int rewardCredits;
+        }
+
+        void setRewardcredits(int rewardCredits) {
+            this->rewardCredits = rewardCredits;
+        }
+            
+
+        int getReputationGain() {
+            return reputationGain;
+        }
+
+        void setReputationGain(int reputationGain) {
+            this->reputationGain = reputationGain;
+        }
+        
+
+        int getEnergyCost() {
+            return energyCost;
+        }
+
+        void setEnergyCost(int energyCost) {
+            this->energyCost = energyCost;
+        }
 
 };
 
@@ -76,6 +120,14 @@ class Mission {
 
 int main() {
     Player player;
+    vector<Player> players;
+    vector<Mission> mission;
+
+    // add a new player to game
+    for (int i = 0; i < players.size(); i++) {
+        Player newPlayer;
+        players.push_back(newPlayer);
+    }
 
     int choice;
     // Main menu
@@ -92,8 +144,9 @@ int main() {
         cin >> choice;
         if (choice == 1) {
             player.setPlayerName("Alex");
+            player.setSkill(0);
              cout << player.getPlayerName() << endl;
-             cout << player.getPlayerName() << endl;
+             cout << player.getSkill() << endl;
              cout << player.getPlayerName() << endl;
              cout << player.getPlayerName() << endl;
              cout << player.getPlayerName() << endl;
