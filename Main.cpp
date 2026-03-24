@@ -40,20 +40,20 @@ class Player {
             this->skill = skill;
         }
 
-        string getPlayerName() {
-            return playerName;
+        int getCredits() {
+            return credits;
         }
 
-        void setPlayerName(string playerName) {
-            this->playerName = playerName;
+        void setCredits(int credits) {
+            this->credits = credits;
         }
 
-        string getPlayerName() {
-            return playerName;
+        int getPlayerReputation() {
+            return reputation;
         }
 
-        void setPlayerName(string playerName) {
-            this->playerName = playerName;
+        void setPlayerReputation(int reputation) {
+            this->reputation = reputation;
         }
 
 
@@ -123,12 +123,18 @@ int main() {
     vector<Player> players;
     vector<Mission> mission;
 
+    int numOfDays = 0;
+
     // add a new player to game
     for (int i = 0; i < players.size(); i++) {
         Player newPlayer;
         players.push_back(newPlayer);
     }
 
+    cout << "==== Cyber Defense Simulator ====" << endl;
+    cout << "Enter your name: ";
+    string firstName;
+    cin >> firstName;
     int choice;
     // Main menu
     while (choice != 6) {
@@ -145,27 +151,46 @@ int main() {
         if (choice == 1) {
             player.setPlayerName("Alex");
             player.setSkill(0);
+            player.setSkill(10);
+            player.setSkill(5);
              cout << player.getPlayerName() << endl;
              cout << player.getSkill() << endl;
-             cout << player.getPlayerName() << endl;
-             cout << player.getPlayerName() << endl;
-             cout << player.getPlayerName() << endl;
-             cout << player.getPlayerName() << endl;
+             cout << player.getCredits() << endl;
+             cout << player.getPlayerReputation() << endl;
 
         } else if (choice == 2) {
 
         } else if (choice == 3) {
 
         } else if (choice == 4) {
+            // visit shop 
+            string toolNames[8];
+            int toolBonus[8];
+            double toolCost[8];
+
+            toolNames[0] = "Hammer";
+
+            // for (int i = 0; i < toolNames(); i++) {
+            //     cout << 
+            // }
+
+            cout << toolNames[0] << endl;
 
         } else if (choice == 5) {
 
         } else if (choice == 6) {
             cout << "Ending game" << endl;
+            // player stats
+            // missions completed
+            // mission history
+            // final score 
+            // rank 
             break;
         } else {
             cout << "Invalid input, try again" << endl;
         }
+
+        numOfDays++;
     }
 
 
