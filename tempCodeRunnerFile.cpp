@@ -1,2 +1,2 @@
 
-    string firstName;
+        string getRewardCredits() {

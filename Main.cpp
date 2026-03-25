@@ -4,6 +4,13 @@
 
 using namespace std;
 
+int finalScore();
+void playerStatus();
+void mainMenu();
+void finalReport();
+void getRank(); 
+
+
 class Player {
     private:
         string playerName;
@@ -92,7 +99,7 @@ class Mission {
             int rewardCredits;
         }
 
-        void setRewardcredits(int rewardCredits) {
+        void setRewardCredits(int rewardCredits) {
             this->rewardCredits = rewardCredits;
         }
             
@@ -116,6 +123,15 @@ class Mission {
 
 };
 
+class ToolShop {
+    vector<string> toolName;
+    vector<int> toolBonus;
+    vector<int> toolCost;
+
+
+
+};
+
 
 
 int main() {
@@ -124,18 +140,26 @@ int main() {
     vector<Mission> mission;
 
     int numOfDays = 0;
+    // player.getEnergy(200);
+    // player.getSkill(20);
+    // player.getCredits(50);
 
     // add a new player to game
-    for (int i = 0; i < players.size(); i++) {
-        Player newPlayer;
-        players.push_back(newPlayer);
-    }
+    // for (int i = 0; i < players.size(); i++) {
+    //     Player newPlayer;
+    //     players.push_back(newPlayer.getPlayerName());
+    // }
 
     cout << "==== Cyber Defense Simulator ====" << endl;
     cout << "Enter your name: ";
     string firstName;
     cin >> firstName;
     int choice;
+
+    players.push_back(player);
+
+
+
     // Main menu
     while (choice != 6) {
 
@@ -148,16 +172,9 @@ int main() {
 
         cout << "Select option: " << endl;
         cin >> choice;
-        if (choice == 1) {
-            player.setPlayerName("Alex");
-            player.setSkill(0);
-            player.setSkill(10);
-            player.setSkill(5);
-             cout << player.getPlayerName() << endl;
-             cout << player.getSkill() << endl;
-             cout << player.getCredits() << endl;
-             cout << player.getPlayerReputation() << endl;
 
+        if (choice == 1) {
+ 
         } else if (choice == 2) {
 
         } else if (choice == 3) {
@@ -180,6 +197,21 @@ int main() {
 
         } else if (choice == 6) {
             cout << "Ending game" << endl;
+
+            cout << " ========== FINAL REPORT ========== " << endl;
+            cout << "Player: " << player.getPlayerName() << endl;
+            cout << endl;
+            cout << "Energy: " << player.getEnergy() << endl;
+            cout << "Energy: " << player.getSkill() << endl;
+            cout << "Energy: " << player.getCredits() << endl;
+            cout << "Energy: " << player.getMissionCompleted() << endl;
+
+            cout << endl;
+            cout << "Final Score: " << finalScore() << endl;
+            cout << "Rank: " << getRank() << endl;
+
+            cout << "===================================" << endl;
+
             // player stats
             // missions completed
             // mission history
@@ -192,6 +224,11 @@ int main() {
 
         numOfDays++;
     }
+    
+    int finalScore();
 
-
+    // void finalReport() {
+    //     cout << "Player: "<< player.getName() << endl;
+    //     cout << "Energy: " << player.getEnergy() << endl;
+    // }
 }
