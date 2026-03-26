@@ -1,14 +1,27 @@
 #include <iostream>
 #include<vector>
 #include<string>
+#include<stdio.h> 
 
 using namespace std;
 
-int finalScore();
+// int finalScore();
 void playerStatus();
 void mainMenu();
 void finalReport();
 void getRank(); 
+
+//add arduino to signal to user if they do not have enough points to complete mission
+//a red LED will signal along with a noise from small speaker module, until they retry
+//green light = mission can be completed 
+
+// void setUp() {
+
+// }
+
+// void loop() {
+
+// }
 
 
 class Player {
@@ -23,44 +36,78 @@ class Player {
         int daysUsed;
 
     public:
+
+        Player() {
+
+        }
+
+        Player(string pN, int e, int s, int c, int r, string cT, int mC, int dU) {
+            playerName = pN;
+            energy = e;
+            skill = s;
+            credits = s;
+            reputation = r;
+            currentTool = cT;
+            missionsCompleted = mC;
+            daysUsed = dU;
+        }
+
         string getPlayerName() {
             return playerName;
         }
 
-        void setPlayerName(string playerName) {
-            this->playerName = playerName;
+        void setPlayerName(string pN) {
+            playerName = pN;
         }
 
         int getEnergy() {
             return energy;
         }
 
-        void setEnergy(int energy) {
-            this->energy = energy;
+        void setEnergy(int e) {
+            energy = e;
         }
 
         int getSkill() {
             return skill;
         }
 
-        void setSkill (int skill) {
-            this->skill = skill;
+        void setSkill (int s) {
+            skill = s;
         }
 
         int getCredits() {
             return credits;
         }
 
-        void setCredits(int credits) {
-            this->credits = credits;
+        void setCredits(int c) {
+            credits = c;
         }
 
         int getPlayerReputation() {
             return reputation;
         }
 
-        void setPlayerReputation(int reputation) {
-            this->reputation = reputation;
+        void setPlayerReputation(int r) {
+            reputation = r;
+        }
+
+        //currentTools
+
+        int getMissionsCompleted() {
+            return missionsCompleted;
+        }
+
+        void setMissionsCompleted(int mC) {
+            missionsCompleted = mC;
+        }
+
+        int getDaysUsed() {
+            return daysUsed;
+        }
+
+        void setDaysUsed(int dU) {
+            daysUsed = dU;
         }
 
 
@@ -83,24 +130,24 @@ class Mission {
             return missionName;
         }
 
-        void setMissionName(string missionName) {
-            this->missionName = missionName;
+        void setMissionName(string mN) {
+            missionName = mN;
         }
 
         string getDifficultyLevel() {
             return difficultyLevel;
         }
 
-        void setDifficultyLevel(string difficultyLevel) {
-            this->difficultyLevel = difficultyLevel;
+        void setDifficultyLevel(string dL) {
+            difficultyLevel = dL;
         }
 
         string getRewardCredits() {
             int rewardCredits;
         }
 
-        void setRewardCredits(int rewardCredits) {
-            this->rewardCredits = rewardCredits;
+        void setRewardCredits(int rC) {
+            rewardCredits = rC;
         }
             
 
@@ -108,8 +155,8 @@ class Mission {
             return reputationGain;
         }
 
-        void setReputationGain(int reputationGain) {
-            this->reputationGain = reputationGain;
+        void setReputationGain(int rG) {
+            reputationGain = rG;
         }
         
 
@@ -117,8 +164,8 @@ class Mission {
             return energyCost;
         }
 
-        void setEnergyCost(int energyCost) {
-            this->energyCost = energyCost;
+        void setEnergyCost(int eC) {
+            energyCost = eC;
         }
 
 };
@@ -136,8 +183,22 @@ class ToolShop {
 
 int main() {
     Player player;
+    Mission mission;
     vector<Player> players;
-    vector<Mission> mission;
+    vector<Mission> missions;
+
+    mission.setMissionName("1. Password Audit");
+    mission.setMissionName("2. Phishing Investigation");
+    mission.setMissionName("3. Firewall Hardening");
+    mission.setMissionName("4. Malware Containment");
+    mission.setMissionName("5. Network Intrusion Response");
+
+    // set players initial state
+    player.setEnergy(100);
+    player.setSkill(50);
+    player.setCredits(100);
+    player.setPlayerReputation(60);
+    player.setMissionsCompleted(0);
 
     int numOfDays = 0;
     // player.getEnergy(200);
@@ -175,10 +236,13 @@ int main() {
 
         if (choice == 1) {
  
+            numOfDays++;
         } else if (choice == 2) {
 
+            numOfDays++;
         } else if (choice == 3) {
-
+            mission.getMissionName();
+            numOfDays++;
         } else if (choice == 4) {
             // visit shop 
             string toolNames[8];
@@ -192,24 +256,23 @@ int main() {
             // }
 
             cout << toolNames[0] << endl;
-
+            numOfDays++;
         } else if (choice == 5) {
-
+            numOfDays++;
         } else if (choice == 6) {
             cout << "Ending game" << endl;
 
-            cout << " ========== FINAL REPORT ========== " << endl;
+            cout << "========== FINAL REPORT ==========" << endl;
             cout << "Player: " << player.getPlayerName() << endl;
             cout << endl;
             cout << "Energy: " << player.getEnergy() << endl;
-            cout << "Energy: " << player.getSkill() << endl;
-            cout << "Energy: " << player.getCredits() << endl;
-            cout << "Energy: " << player.getMissionCompleted() << endl;
-
+            cout << "Skill: " << player.getSkill() << endl;
+            cout << "Credits: " << player.getCredits() << endl;
+            cout << "Reputation: " << player.getPlayerReputation() << endl;
+            cout << "Missions Completed: " << player.getMissionsCompleted() << endl;
             cout << endl;
-            cout << "Final Score: " << finalScore() << endl;
-            cout << "Rank: " << getRank() << endl;
-
+            cout << "Final Score: " << endl;
+            cout << "Rank: " << endl;
             cout << "===================================" << endl;
 
             // player stats
@@ -218,6 +281,8 @@ int main() {
             // final score 
             // rank 
             break;
+        } else if (numOfDays == 12) {
+            break;
         } else {
             cout << "Invalid input, try again" << endl;
         }
@@ -225,7 +290,7 @@ int main() {
         numOfDays++;
     }
     
-    int finalScore();
+    // int finalScore();
 
     // void finalReport() {
     //     cout << "Player: "<< player.getName() << endl;
