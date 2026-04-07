@@ -5,11 +5,15 @@
 
 using namespace std;
 
-// int finalScore();
+int finalScore();
 void playerStatus();
 void mainMenu();
 void finalReport();
 void getRank(); 
+void viewStatus();
+void train();
+void rest();
+void availableMissions();
 
 //add arduino to signal to user if they do not have enough points to complete mission
 //a red LED will signal along with a noise from small speaker module, until they retry
@@ -110,6 +114,16 @@ class Player {
             daysUsed = dU;
         }
 
+        void playerStatus() {
+            cout << "----- Player Status -----" << endl;
+            cout << "Name: " <<  getPlayerName() << endl;
+            cout << "Energy: " << getPlayerName() << endl;
+            cout << "Skill: " << getPlayerName() << endl;
+            cout << "Credits: " << getPlayerName() << endl;
+            cout << "Reputation: " << getPlayerName() << endl;
+            cout << getPlayerName() << endl;
+            cout << getPlayerName() << endl;
+        }
 
 
 };
@@ -168,6 +182,27 @@ class Mission {
             energyCost = eC;
         }
 
+        void availableMission() {
+            int pointsPerMission = 0 ;
+            cout << "1. Password Audit" << endl;
+            cout << "2. Phishing Investigation" << endl;
+            cout << "3. Firewall Hardening" << endl;
+            cout << "4. Malware Containment" << endl;
+            cout << "5. Network Intrusion Response" << endl;
+
+            // if () {
+            //     pointsPerMission = 100;
+            // } else if () {
+
+            // } else if () {
+            //     pointsPerMission = 150;
+            // } else if () {
+
+            // } else if () {
+
+            // } 
+        }
+
 };
 
 class ToolShop {
@@ -215,12 +250,11 @@ int main() {
     cout << "Enter your name: ";
     string firstName;
     cin >> firstName;
+    player.setPlayerName(firstName);
     int choice;
 
-    players.push_back(player);
-
-
-
+    // players.push_back();
+    
     // Main menu
     while (choice != 6) {
 
@@ -235,13 +269,13 @@ int main() {
         cin >> choice;
 
         if (choice == 1) {
- 
+            player.playerStatus();
             numOfDays++;
         } else if (choice == 2) {
 
             numOfDays++;
         } else if (choice == 3) {
-            mission.getMissionName();
+            rest();
             numOfDays++;
         } else if (choice == 4) {
             // visit shop 
@@ -258,6 +292,9 @@ int main() {
             cout << toolNames[0] << endl;
             numOfDays++;
         } else if (choice == 5) {
+            cout << "Available Missions: " << endl;
+            cout << endl;
+            mission.availableMission();
             numOfDays++;
         } else if (choice == 6) {
             cout << "Ending game" << endl;
@@ -296,4 +333,11 @@ int main() {
     //     cout << "Player: "<< player.getName() << endl;
     //     cout << "Energy: " << player.getEnergy() << endl;
     // }
+
+
+}
+
+ void rest() {
+    Player player;
+        cout << player.getPlayerName() + " is resting..." << endl;
 }
