@@ -14,6 +14,7 @@ void viewStatus();
 void train();
 void rest();
 void availableMissions();
+void visitShop();
 
 //add arduino to signal to user if they do not have enough points to complete mission
 //a red LED will signal along with a noise from small speaker module, until they retry
@@ -185,8 +186,8 @@ class Mission {
         void availableMission() {
             int pointsPerMission = 0 ;
             int choice;
-            cout << "Enter your choice: ";
-            cin >> choice;
+            // cout << "Enter your choice: ";
+            // cin >> choice;
             cout << endl;
             cout << "Available Missions: " << endl;
             cout << endl;
@@ -196,7 +197,9 @@ class Mission {
             cout << "4. Malware Containment" << endl;
             cout << "5. Network Intrusion Response" << endl;
             cout << endl;
-            cout << "Choose mission number: " << choice << endl;
+            cout << "Choose mission number: ";
+            cin >> choice;
+
             cout << endl;
 
             if (choice == 1) {
@@ -210,7 +213,11 @@ class Mission {
             } else if (choice ==5 ) {
                 pointsPerMission = 60;
             } 
+
+            cout << "Display points earned: " << pointsPerMission << endl;
+            cout << endl;
         }
+
 
 };
 
@@ -218,9 +225,29 @@ class ToolShop {
     vector<string> toolName;
     vector<int> toolBonus;
     vector<int> toolCost;
+    int choice;
 
+    public:
+    void visitShop() {
+        cout << "----- Tool Shop -----" << endl;
+        cout << "0. Basic Laptop (Owned)" << endl;
+        cout << "1. Packet Sniffer (Cost 40)" << endl;
+        cout << "2. IDS Toolkit (Cost 70)" << endl;
+        cout << "3. AI Defense Console (Cost 110)" << endl;
 
-
+        cout << endl;
+        cout << "Enter tool number: ";
+        cin >> choice;
+        cout << "Purchase successful" << endl;
+        if (choice == 1 ) {
+            cout << "You now own Packet Sniffer" << endl;
+        } else if (choice == 2) {
+            cout << "You now own IDS Toolkit" << endl;
+        } else if (choice == 3) {
+            cout << "You now own AI Defense Console" << endl;
+        }
+        cout << endl;
+    }
 };
 
 
@@ -230,6 +257,7 @@ int main() {
     Mission mission;
     vector<Player> players;
     vector<Mission> missions;
+    ToolShop ts;
 
     mission.setMissionName("1. Password Audit");
     mission.setMissionName("2. Phishing Investigation");
@@ -274,8 +302,9 @@ int main() {
         cout << "5. Attempt Mission" << endl;
         cout << "6. Quit" << endl;
 
-        cout << "Select option: " << endl;
+        cout << "Enter your choice: ";
         cin >> choice;
+        cout << endl;
 
         if (choice == 1) {
             player.playerStatus();
@@ -288,21 +317,20 @@ int main() {
             numOfDays++;
         } else if (choice == 4) {
             // visit shop 
-            string toolNames[8];
-            int toolBonus[8];
-            double toolCost[8];
+            // string toolNames[8];
+            // int toolBonus[8];
+            // double toolCost[8];
 
-            toolNames[0] = "Hammer";
+            // toolNames[0] = "Hammer";
 
             // for (int i = 0; i < toolNames(); i++) {
             //     cout << 
             // }
 
-            cout << toolNames[0] << endl;
+            // cout << toolNames[0] << endl;
+            ts.visitShop();
             numOfDays++;
         } else if (choice == 5) {
-            cout << "Available Missions: " << endl;
-            cout << endl;
             mission.availableMission();
         
             numOfDays++;
@@ -334,7 +362,7 @@ int main() {
             cout << "Invalid input, try again" << endl;
         }
 
-        numOfDays++;
+        cout << numOfDays; 
     }
     
     // int finalScore();
