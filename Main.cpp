@@ -184,23 +184,32 @@ class Mission {
 
         void availableMission() {
             int pointsPerMission = 0 ;
+            int choice;
+            cout << "Enter your choice: ";
+            cin >> choice;
+            cout << endl;
+            cout << "Available Missions: " << endl;
+            cout << endl;
             cout << "1. Password Audit" << endl;
             cout << "2. Phishing Investigation" << endl;
             cout << "3. Firewall Hardening" << endl;
             cout << "4. Malware Containment" << endl;
             cout << "5. Network Intrusion Response" << endl;
+            cout << endl;
+            cout << "Choose mission number: " << choice << endl;
+            cout << endl;
 
-            // if () {
-            //     pointsPerMission = 100;
-            // } else if () {
-
-            // } else if () {
-            //     pointsPerMission = 150;
-            // } else if () {
-
-            // } else if () {
-
-            // } 
+            if (choice == 1) {
+                pointsPerMission = 20;
+            } else if (choice == 2) {
+                pointsPerMission = 25;
+            } else if (choice == 3) {
+                pointsPerMission = 30;
+            } else if (choice == 4) {
+                pointsPerMission = 45;
+            } else if (choice ==5 ) {
+                pointsPerMission = 60;
+            } 
         }
 
 };
@@ -257,7 +266,7 @@ int main() {
     
     // Main menu
     while (choice != 6) {
-
+        numOfDays = 0;
         cout << "1. View status" << endl;
         cout << "2. Train" << endl;
         cout << "3. Rest" << endl;
@@ -295,6 +304,7 @@ int main() {
             cout << "Available Missions: " << endl;
             cout << endl;
             mission.availableMission();
+        
             numOfDays++;
         } else if (choice == 6) {
             cout << "Ending game" << endl;
@@ -311,7 +321,7 @@ int main() {
             cout << "Final Score: " << endl;
             cout << "Rank: " << endl;
             cout << "===================================" << endl;
-
+            cout << "Number of days: " << numOfDays << endl;
             // player stats
             // missions completed
             // mission history
