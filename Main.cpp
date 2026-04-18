@@ -12,9 +12,10 @@ void finalReport();
 void getRank(); 
 void viewStatus();
 void train();
-void rest();
+// string rest();
 void availableMissions();
 void visitShop();
+void viewTools();
 
 //add arduino to signal to user if they do not have enough points to complete mission
 //a red LED will signal along with a noise from small speaker module, until they retry
@@ -30,6 +31,7 @@ void visitShop();
 
 
 class Player {
+    vector<Player> players;
     private:
         string playerName;
         int energy;
@@ -39,6 +41,7 @@ class Player {
         string currentTool;
         int missionsCompleted;
         int daysUsed;
+        int daysPassed;
 
     public:
 
@@ -122,10 +125,27 @@ class Player {
             cout << "Skill: " << getPlayerName() << endl;
             cout << "Credits: " << getPlayerName() << endl;
             cout << "Reputation: " << getPlayerName() << endl;
-            cout << getPlayerName() << endl;
-            cout << getPlayerName() << endl;
+            // cout << getPlayerName() << endl;
+            // cout << getPlayerName() << endl;
+            cout << endl;
+      
         }
 
+        void finalReport() {
+            cout << "========== FINAL REPORT ==========" << endl;
+            cout << "Player: " << getPlayerName() << endl;
+            cout << endl;
+            cout << "Energy: " << getEnergy() << endl;
+            cout << "Skill: " << getSkill() << endl;
+            cout << "Credits: " << getCredits() << endl;
+            cout << "Reputation: " << getPlayerReputation() << endl;
+            cout << "Missions Completed: " << getMissionsCompleted() << endl;
+            cout << endl;
+            cout << "Final Score: " << endl;
+            cout << "Rank: " << endl;
+            cout << "===================================" << endl;
+
+        }
 
 };
 
@@ -186,8 +206,7 @@ class Mission {
         void availableMission() {
             int pointsPerMission = 0 ;
             int choice;
-            // cout << "Enter your choice: ";
-            // cin >> choice;
+        
             cout << endl;
             cout << "Available Missions: " << endl;
             cout << endl;
@@ -226,6 +245,8 @@ class ToolShop {
     vector<int> toolBonus;
     vector<int> toolCost;
     int choice;
+    unsigned int i;
+    // string name;
 
     public:
     void visitShop() {
@@ -248,6 +269,13 @@ class ToolShop {
         }
         cout << endl;
     }
+
+    void viewTools() {
+
+        for (i = 0; i < toolName.size(); i++) {
+            cout << toolName.at(i) << endl;
+        }
+    }
 };
 
 
@@ -255,9 +283,9 @@ class ToolShop {
 int main() {
     Player player;
     Mission mission;
+    ToolShop ts;
     vector<Player> players;
     vector<Mission> missions;
-    ToolShop ts;
 
     mission.setMissionName("1. Password Audit");
     mission.setMissionName("2. Phishing Investigation");
@@ -290,11 +318,11 @@ int main() {
     player.setPlayerName(firstName);
     int choice;
 
-    // players.push_back();
-    
+    cout << "List of tools: " << endl;
     // Main menu
+    numOfDays = 0;
     while (choice != 6) {
-        numOfDays = 0;
+
         cout << "1. View status" << endl;
         cout << "2. Train" << endl;
         cout << "3. Rest" << endl;
@@ -313,21 +341,10 @@ int main() {
 
             numOfDays++;
         } else if (choice == 3) {
-            rest();
-            numOfDays++;
+            cout << player.getPlayerName() << " is resting" << endl;
+            numOfDays ++;
         } else if (choice == 4) {
-            // visit shop 
-            // string toolNames[8];
-            // int toolBonus[8];
-            // double toolCost[8];
 
-            // toolNames[0] = "Hammer";
-
-            // for (int i = 0; i < toolNames(); i++) {
-            //     cout << 
-            // }
-
-            // cout << toolNames[0] << endl;
             ts.visitShop();
             numOfDays++;
         } else if (choice == 5) {
@@ -337,45 +354,27 @@ int main() {
         } else if (choice == 6) {
             cout << "Ending game" << endl;
 
-            cout << "========== FINAL REPORT ==========" << endl;
-            cout << "Player: " << player.getPlayerName() << endl;
-            cout << endl;
-            cout << "Energy: " << player.getEnergy() << endl;
-            cout << "Skill: " << player.getSkill() << endl;
-            cout << "Credits: " << player.getCredits() << endl;
-            cout << "Reputation: " << player.getPlayerReputation() << endl;
-            cout << "Missions Completed: " << player.getMissionsCompleted() << endl;
-            cout << endl;
-            cout << "Final Score: " << endl;
-            cout << "Rank: " << endl;
-            cout << "===================================" << endl;
-            cout << "Number of days: " << numOfDays << endl;
+            player.finalReport();
             // player stats
             // missions completed
             // mission history
             // final score 
             // rank 
             break;
-        } else if (numOfDays == 12) {
-            break;
         } else {
             cout << "Invalid input, try again" << endl;
         }
 
-        cout << numOfDays; 
+        if (numOfDays == 12){
+            cout << "Number of days: " << numOfDays << endl;
+            player.finalReport();
+            break;
+        }
+
+        cout << "Days passed: " << numOfDays << endl; 
+        
     }
-    
-    // int finalScore();
-
-    // void finalReport() {
-    //     cout << "Player: "<< player.getName() << endl;
-    //     cout << "Energy: " << player.getEnergy() << endl;
-    // }
-
 
 }
 
- void rest() {
-    Player player;
-        cout << player.getPlayerName() + " is resting..." << endl;
-}
+
